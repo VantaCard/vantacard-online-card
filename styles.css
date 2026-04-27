@@ -4,19 +4,25 @@
   --panel: #151620;
   --panel-soft: #1a1b25;
   --panel-border: rgba(255, 255, 255, 0.08);
-  --gold: #cbb06d;
-  --gold-deep: #80652a;
-  --gold-soft: rgba(203, 176, 109, 0.18);
+  --gold: #d9c182;
+  --gold-bright: #f4e2ad;
+  --gold-deep: #7d5e21;
+  --gold-soft: rgba(217, 193, 130, 0.18);
   --text: #f4f1ea;
   --text-soft: rgba(244, 241, 234, 0.76);
   --muted: rgba(244, 241, 234, 0.58);
   --violet: #7c49ff;
   --cyan: #53a6d6;
+  --teal: #83f0da;
   --shadow: 0 38px 90px rgba(0, 0, 0, 0.42);
 }
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  appearance: none;
 }
 
 html {
@@ -29,10 +35,10 @@ body {
   font-family: "Manrope", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at 20% 10%, rgba(124, 73, 255, 0.12), transparent 22%),
-    radial-gradient(circle at 80% 18%, rgba(83, 166, 214, 0.1), transparent 18%),
-    radial-gradient(circle at 50% 50%, rgba(48, 27, 79, 0.14), transparent 38%),
-    linear-gradient(180deg, #0a0b12 0%, #090a12 100%);
+    radial-gradient(circle at 18% 12%, rgba(124, 73, 255, 0.16), transparent 20%),
+    radial-gradient(circle at 84% 14%, rgba(83, 166, 214, 0.12), transparent 16%),
+    radial-gradient(circle at 50% 38%, rgba(104, 70, 176, 0.11), transparent 32%),
+    linear-gradient(180deg, #0b0c14 0%, #090a12 42%, #07080f 100%);
   overflow-x: hidden;
 }
 
@@ -41,7 +47,12 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 30%);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 30%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+  background-size: auto, 80px 80px, 80px 80px;
+  opacity: 0.45;
 }
 
 .ambient {
@@ -76,12 +87,32 @@ body::before {
 }
 
 .phone-stage {
+  position: relative;
   width: min(100%, 31rem);
   padding: 1.1rem;
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  background: linear-gradient(180deg, rgba(17, 18, 26, 0.94), rgba(11, 12, 19, 0.98));
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 18%),
+    radial-gradient(circle at 20% 0, rgba(124, 73, 255, 0.14), transparent 28%),
+    radial-gradient(circle at 100% 100%, rgba(83, 166, 214, 0.11), transparent 22%),
+    linear-gradient(180deg, rgba(17, 18, 26, 0.94), rgba(11, 12, 19, 0.98));
   box-shadow: var(--shadow);
+}
+
+.phone-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(217, 193, 130, 0.16), rgba(83, 166, 214, 0.14));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .phone-frame {
@@ -92,11 +123,21 @@ body::before {
   border-radius: 2.7rem;
   border: 1px solid var(--panel-border);
   background:
-    linear-gradient(180deg, rgba(34, 35, 45, 0.96), rgba(22, 23, 32, 0.98)),
+    linear-gradient(180deg, rgba(41, 43, 57, 0.98), rgba(20, 21, 30, 0.98)),
     #161720;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -12px 30px rgba(0, 0, 0, 0.28),
     0 30px 70px rgba(0, 0, 0, 0.35);
+}
+
+.phone-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0.6rem;
+  border-radius: 2.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  pointer-events: none;
 }
 
 .phone-notch {
@@ -112,17 +153,46 @@ body::before {
 }
 
 .phone-card {
+  position: relative;
+  overflow: hidden;
   display: grid;
   gap: 1rem;
   padding: 1.2rem;
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background:
-    radial-gradient(circle at 50% 0, rgba(203, 176, 109, 0.07), transparent 24%),
-    linear-gradient(180deg, #151620 0%, #12131b 100%);
+    radial-gradient(circle at 50% 0, rgba(217, 193, 130, 0.08), transparent 24%),
+    linear-gradient(180deg, #181924 0%, #12131b 56%, #101119 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 -20px 30px rgba(0, 0, 0, 0.18);
+}
+
+.phone-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 0, rgba(255, 255, 255, 0.06), transparent 20%),
+    linear-gradient(115deg, transparent 28%, rgba(255, 255, 255, 0.05) 50%, transparent 68%);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.phone-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 100% 4px;
+  opacity: 0.08;
+  pointer-events: none;
 }
 
 .status-pill {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
@@ -130,13 +200,17 @@ body::before {
   min-height: 3rem;
   padding: 0.7rem 1rem;
   border-radius: 999px;
-  border: 1px solid rgba(203, 176, 109, 0.22);
-  background: rgba(48, 40, 18, 0.34);
-  color: #d7c59c;
+  border: 1px solid rgba(217, 193, 130, 0.28);
+  background:
+    linear-gradient(180deg, rgba(72, 58, 24, 0.48), rgba(39, 32, 17, 0.34));
+  color: #ebdab0;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.76rem;
   font-weight: 800;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(217, 193, 130, 0.05);
 }
 
 .status-dot {
@@ -148,36 +222,29 @@ body::before {
 }
 
 .identity-row {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 0.9rem;
 }
 
 .logo-box {
-  width: 4.1rem;
-  height: 4.1rem;
+  width: 2.7rem;
+  height: 2.7rem;
   display: grid;
   place-items: center;
-  padding: 0.5rem;
-  border-radius: 1.15rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background:
-    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.18), transparent 30%),
-    linear-gradient(180deg, rgba(75, 78, 95, 0.88), rgba(34, 35, 44, 0.94));
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 16px 34px rgba(0, 0, 0, 0.22);
 }
 
 .logo-box img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transform: scale(1.05);
+  transform: scale(1);
   filter:
-    brightness(1.12)
+    brightness(1.16)
     saturate(1.08)
-    drop-shadow(0 8px 18px rgba(103, 115, 255, 0.35));
+    drop-shadow(0 8px 18px rgba(103, 115, 255, 0.28));
 }
 
 .identity-copy {
@@ -194,29 +261,35 @@ h1,
 }
 
 h1 {
+  font-family: "Space Grotesk", "Manrope", sans-serif;
   font-size: clamp(2rem, 7vw, 2.7rem);
   line-height: 0.92;
-  letter-spacing: -0.04em;
-  font-weight: 800;
+  letter-spacing: -0.06em;
+  font-weight: 700;
+  text-shadow: 0 0 28px rgba(255, 255, 255, 0.08);
 }
 
 .role {
   margin-top: 0.28rem;
-  color: #ccbb95;
+  color: #dcc894;
   font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.26em;
   font-weight: 700;
 }
 
 .language-toggle {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.28rem;
   padding: 0.28rem;
   border-radius: 999px;
-  border: 1px solid rgba(203, 176, 109, 0.16);
-  background: rgba(28, 24, 15, 0.5);
+  border: 1px solid rgba(217, 193, 130, 0.16);
+  background:
+    linear-gradient(180deg, rgba(36, 30, 18, 0.58), rgba(20, 17, 10, 0.38));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .lang-button {
@@ -235,35 +308,64 @@ h1 {
 }
 
 .lang-button.is-active {
-  background: linear-gradient(180deg, #cdb06a, #b08f49);
+  background:
+    linear-gradient(180deg, var(--gold-bright), #cfb26b 42%, #b08f49 100%);
   color: #1a160f;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 10px 24px rgba(176, 143, 73, 0.18);
 }
 
 .action-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.8rem;
 }
 
 .action-pill {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 4.2rem;
   padding: 0.9rem;
   border-radius: 1.55rem;
-  border: 1px solid rgba(203, 176, 109, 0.16);
-  background: rgba(31, 28, 22, 0.56);
+  border: 1px solid rgba(217, 193, 130, 0.16);
+  background:
+    linear-gradient(180deg, rgba(37, 32, 24, 0.82), rgba(22, 19, 14, 0.8));
   color: var(--text);
   font: inherit;
   font-size: 0.88rem;
   font-weight: 800;
+  letter-spacing: 0.02em;
   cursor: pointer;
-  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -12px 18px rgba(0, 0, 0, 0.16);
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.action-pill::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+  box-shadow: 0 0 12px rgba(217, 193, 130, 0.28);
+  opacity: 0.8;
 }
 
 .demo-note {
+  position: relative;
+  z-index: 1;
+  padding: 0.75rem 0.85rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.025);
   color: var(--muted);
   font-size: 0.76rem;
   line-height: 1.45;
@@ -282,11 +384,18 @@ h1 {
 
 .action-pill:hover,
 .action-pill:focus-visible {
-  border-color: rgba(203, 176, 109, 0.34);
-  background: rgba(41, 36, 26, 0.72);
+  border-color: rgba(217, 193, 130, 0.38);
+  background:
+    linear-gradient(180deg, rgba(47, 40, 28, 0.9), rgba(29, 24, 16, 0.9));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -12px 18px rgba(0, 0, 0, 0.16),
+    0 16px 26px rgba(0, 0, 0, 0.18);
 }
 
 .content-block {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 0.42rem;
 }
@@ -303,31 +412,40 @@ h1 {
   color: var(--text-soft);
   font-size: 0.98rem;
   line-height: 1.5;
+  max-width: 18rem;
 }
 
 .social-row {
+  position: relative;
+  z-index: 1;
   display: flex;
   gap: 0.7rem;
 }
 
 .social-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  color: #d8c69f;
+  color: #e3cf9e;
   font: inherit;
   font-size: 0.92rem;
   font-weight: 800;
   text-transform: uppercase;
-  border: 1px solid rgba(203, 176, 109, 0.18);
-  background: rgba(27, 24, 18, 0.58);
+  border: 1px solid rgba(217, 193, 130, 0.2);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.06), transparent 28%),
+    rgba(27, 24, 18, 0.68);
   cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .bottom-row {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: auto auto;
   align-items: end;
@@ -344,7 +462,7 @@ h1 {
   width: 7.4rem;
   height: 7.4rem;
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background:
     linear-gradient(90deg, #fff 10%, transparent 10%) 0 0 / 22px 22px,
     linear-gradient(#fff 10%, transparent 10%) 0 0 / 22px 22px,
@@ -353,6 +471,9 @@ h1 {
     #f2f2f2;
   position: relative;
   overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 18px 28px rgba(0, 0, 0, 0.18);
 }
 
 .qr-code::before,
@@ -382,6 +503,7 @@ h1 {
 }
 
 .wallet-pill {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -389,15 +511,27 @@ h1 {
   min-height: 4rem;
   padding: 0.8rem 1.25rem;
   border-radius: 999px;
-  border: 1px solid rgba(203, 176, 109, 0.24);
-  background: linear-gradient(180deg, rgba(86, 62, 23, 0.92), rgba(59, 43, 16, 0.98));
-  color: #ead7a8;
+  border: 1px solid rgba(217, 193, 130, 0.28);
+  background:
+    linear-gradient(180deg, rgba(106, 76, 28, 0.94), rgba(64, 46, 17, 0.98));
+  color: #f1dfaf;
   font: inherit;
   font-size: 0.92rem;
   font-weight: 800;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 16px 30px rgba(96, 70, 24, 0.22);
+}
+
+.wallet-pill::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 38%);
+  pointer-events: none;
 }
 
 @media (max-width: 520px) {
@@ -438,9 +572,8 @@ h1 {
   }
 
   .logo-box {
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 1rem;
+    width: 2.35rem;
+    height: 2.35rem;
   }
 
   h1 {
