@@ -1,112 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VantaCard | Online Business Card</title>
+    <title>VantaCard | Live Demo Card</title>
     <meta
       name="description"
-      content="Luxury futuristic VantaCard online business card preview for customers scanning a QR code."
+      content="Luxury phone-first VantaCard demo with live actions, QR access, and wallet-ready presentation."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260427-04" />
   </head>
   <body>
-    <div class="ambient ambient-violet"></div>
-    <div class="ambient ambient-cyan"></div>
+    <div class="ambient ambient-left"></div>
+    <div class="ambient ambient-right"></div>
 
     <main class="page-shell">
-      <section class="digital-card" aria-label="VantaCard online business card">
-        <div class="card-copy">
-          <div class="top-row">
-            <div class="logo-box">
-              <img src="./logo.png" alt="VantaCard logo" />
-            </div>
+      <section class="phone-stage" aria-label="VantaCard phone demo">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
 
+          <article class="phone-card" aria-label="VantaCard digital business card">
             <div class="status-pill">
               <span class="status-dot"></span>
-              <span data-i18n="status">Premium digital identity</span>
+              <span data-i18n="status">Lista para compartir</span>
             </div>
-          </div>
 
-          <p class="eyebrow" data-i18n="brand">VantaCard</p>
-          <h1 data-i18n="title">Digital Card</h1>
-          <p class="subtitle" data-i18n="subtitle">
-            Premium cards for brands, founders, and teams.
-          </p>
+            <header class="identity-row">
+              <div class="logo-box">
+                <img src="./logo.png" alt="VantaCard logo" />
+              </div>
 
-          <div class="language-toggle" aria-label="Language selector">
-            <button class="lang-button" type="button" data-lang="en" aria-pressed="false">
-              English
-            </button>
-            <button class="lang-button is-active" type="button" data-lang="es" aria-pressed="true">
-              Español
-            </button>
-          </div>
+              <div class="identity-copy">
+                <h1 data-i18n="brand">VantaCard</h1>
+                <p class="role" data-i18n="role">Digital Identity Studio</p>
+              </div>
+            </header>
 
-          <div class="content-block">
-            <p class="section-label" data-i18n="section">About</p>
-            <p class="description" data-i18n="description">
-              VantaCard transforms a traditional business card into a premium digital
-              profile. Scan the QR code to open a clean branded card with direct contact
-              actions and a polished first impression on any phone.
+            <div class="language-toggle" aria-label="Language selector">
+              <button class="lang-button" type="button" data-lang="en" aria-pressed="false">
+                English
+              </button>
+              <button class="lang-button is-active" type="button" data-lang="es" aria-pressed="true">
+                Español
+              </button>
+            </div>
+
+            <div class="action-grid" aria-label="Primary actions">
+              <button class="action-pill" type="button" data-i18n="actionPhone">Llamar</button>
+              <button class="action-pill" type="button" data-i18n="actionEmail">Correo</button>
+              <button class="action-pill" type="button" data-i18n="actionWeb">Web</button>
+              <button class="action-pill" type="button" data-i18n="actionWhatsapp">WhatsApp</button>
+            </div>
+
+            <p class="demo-note" data-i18n="demoNote">
+              Vista previa: los botones son solo de muestra y no abren acciones reales en esta demo.
             </p>
-          </div>
 
-          <div class="mobile-summary">
-            <div class="mobile-summary-logo">
-              <img src="./logo.png" alt="" />
+            <section class="content-block" aria-label="About this demo card">
+              <p class="section-label" data-i18n="aboutLabel">Acerca de</p>
+              <p class="description" data-i18n="description">
+                Una tarjeta movil premium con acciones en vivo, acceso por QR y opcion para
+                compartir desde Wallet.
+              </p>
+            </section>
+
+            <div class="social-row" aria-label="Social links">
+              <button class="social-link" type="button" aria-label="LinkedIn">in</button>
+              <button class="social-link" type="button" aria-label="Instagram">ig</button>
+              <button class="social-link" type="button" aria-label="X">x</button>
             </div>
-            <div class="mobile-summary-copy">
-              <p class="mobile-role" data-i18n="previewTitle">VantaCard</p>
-              <p class="mobile-meta" data-i18n="previewSubtitle">Digital Identity Studio</p>
-              <p class="mobile-meta" data-i18n="metaOne">Custom branded profile</p>
-              <p class="mobile-meta" data-i18n="metaTwo">QR-ready and phone-first</p>
+
+            <div class="bottom-row">
+              <div class="qr-block">
+                <div class="qr-code" aria-hidden="true"></div>
+                <p class="qr-caption" data-i18n="qrCaption">Escanea y mira</p>
+              </div>
+
+              <button class="wallet-pill" type="button" data-i18n="walletAction">
+                Pase Wallet
+              </button>
             </div>
-          </div>
-
-          <div class="action-row">
-            <a class="action-pill" href="#" aria-label="WhatsApp preview" data-i18n="actionWhatsapp">WhatsApp</a>
-            <a class="action-pill" href="#" aria-label="Instagram preview" data-i18n="actionInstagram">Instagram</a>
-            <a class="action-pill" href="#" aria-label="X preview" data-i18n="actionX">X</a>
-            <a class="action-pill" href="#" aria-label="Phone preview" data-i18n="actionPhone">Phone</a>
-            <a class="action-pill" href="#" aria-label="Email preview" data-i18n="actionEmail">Email</a>
-            <a class="action-pill is-outline" href="#" aria-label="LinkedIn preview" data-i18n="actionLinkedin">LinkedIn</a>
-          </div>
-
-          <p class="footnote" data-i18n="footnote">
-            Scan the physical card to open the live VantaCard experience instantly.
-          </p>
+          </article>
         </div>
-
-        <aside class="mini-preview">
-          <div class="preview-halo"></div>
-          <div class="preview-card">
-            <div class="preview-avatar">
-              <img src="./logo.png" alt="" />
-            </div>
-
-            <div class="preview-copy">
-              <h2 data-i18n="previewTitle">VantaCard</h2>
-              <p data-i18n="previewSubtitle">Digital Identity Studio</p>
-            </div>
-
-            <div class="preview-divider"></div>
-
-            <div class="preview-meta">
-              <span data-i18n="metaOne">Custom branded profile</span>
-              <span data-i18n="metaTwo">QR-ready and phone-first</span>
-            </div>
-          </div>
-        </aside>
       </section>
     </main>
 
-    <script src="./script.js"></script>
+    <script src="./script.js?v=20260427-04"></script>
   </body>
 </html>
