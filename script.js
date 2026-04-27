@@ -7,25 +7,25 @@ const translations = {
     actionEmail: "Email",
     actionWeb: "Web",
     actionWhatsapp: "WhatsApp",
-    demoNote: "Preview only. These buttons are visual examples and do not open real actions in this demo.",
+    demoNote: "Preview only. These buttons are visual examples and do not trigger real actions in this demo.",
     aboutLabel: "About",
     description:
-      "A premium mobile card with live actions, QR access, and a Wallet-ready option for sharing your brand.",
+      "A premium mobile card with live actions, QR access, and a Wallet-ready option to showcase your brand.",
     qrCaption: "Scan and view",
-    walletAction: "Pass Wallet"
+    walletAction: "Wallet Pass"
   },
   es: {
     status: "Lista para compartir",
     brand: "VantaCard",
-    role: "Digital Identity Studio",
+    role: "Estudio de Identidad Digital",
     actionPhone: "Llamar",
     actionEmail: "Correo",
     actionWeb: "Web",
     actionWhatsapp: "WhatsApp",
-    demoNote: "Vista previa: los botones son solo de muestra y no abren acciones reales en esta demo.",
+    demoNote: "Vista previa: los botones son solo de muestra y no activan acciones reales en esta demo.",
     aboutLabel: "Acerca de",
     description:
-      "Una tarjeta movil premium con acciones en vivo, acceso por QR y opcion para compartir desde Wallet.",
+      "Una tarjeta móvil premium con acciones en vivo, acceso por QR y opción para compartir desde Wallet.",
     qrCaption: "Escanea y mira",
     walletAction: "Pase Wallet"
   }
@@ -33,7 +33,15 @@ const translations = {
 
 const languageButtons = document.querySelectorAll("[data-lang]");
 const translatableNodes = document.querySelectorAll("[data-i18n]");
-const defaultLanguage = "es";
+let savedLanguage = null;
+
+try {
+  savedLanguage = window.localStorage.getItem("vantacard-demo-lang");
+} catch (error) {
+  savedLanguage = null;
+}
+
+const defaultLanguage = savedLanguage || "es";
 
 function setLanguage(lang) {
   const dictionary = translations[lang];
@@ -53,6 +61,12 @@ function setLanguage(lang) {
   });
 
   document.documentElement.lang = lang;
+
+  try {
+    window.localStorage.setItem("vantacard-demo-lang", lang);
+  } catch (error) {
+    // Ignore storage failures so language switching still works.
+  }
 }
 
 languageButtons.forEach((button) => {
