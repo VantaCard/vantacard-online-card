@@ -7,6 +7,16 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <meta name="theme-color" content="#0b0c14" />
+    <script>
+      (function () {
+        var buildVersion = "20260427-07";
+        var url = new URL(window.location.href);
+        if (url.searchParams.get("v") !== buildVersion) {
+          url.searchParams.set("v", buildVersion);
+          window.location.replace(url.toString());
+        }
+      })();
+    </script>
     <title>VantaCard | Live Demo Card</title>
     <meta
       name="description"
@@ -18,7 +28,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260427-06" />
+    <link rel="stylesheet" href="./styles.v20260427-07.css" />
   </head>
   <body>
     <div class="ambient ambient-left"></div>
@@ -91,6 +101,6 @@
       </section>
     </main>
 
-    <script src="./script.js?v=20260427-06"></script>
+    <script src="./script.v20260427-07.js"></script>
   </body>
 </html>
